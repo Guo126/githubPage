@@ -22,7 +22,8 @@
           </div>
         </div>
         <div class="head-content-middle">
-          我愿我的脚步留痕天下
+          我愿
+          <br/>我的脚步留痕天下
         </div>
       </div>
       <div style=" position: relative;">
