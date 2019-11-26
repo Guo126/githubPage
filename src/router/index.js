@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import MyWorld from '@/components/items/MyWorld'
 import ContactMe from '@/components/items/ContactMe'
 import MyZoom from '@/components/items/MyZoom'
+import MyStory from '@/components/items/Story/readStory'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/myzoom',
       name: 'MyZoom',
       component: MyZoom
+    },
+    {
+      path: '/readStory',
+      name: 'MyStory',
+      component: MyStory
     },
   ]
 })

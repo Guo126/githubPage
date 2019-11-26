@@ -161,7 +161,7 @@
         <div style="padding-top:80px" class="flex-col">
           <div class="menuL" @click="toItemA">欢迎投稿</div>
           <div class="menuL" @click="toItemB">幸运记事</div>
-          <div class="menuL" @click="toItemC">博主日常</div>
+          <div class="menuL" @click="toItemC">微小说</div>
           <div class="menuL" @click="toItemD">联系我</div>
         </div>
       </div>
