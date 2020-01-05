@@ -6,8 +6,8 @@
       <div class="head-content">
         <!-- 标题栏 -->
         <div id="title" class="head-content-head flex-row">
-          <img src="/static/imgs/title.png" />
-          <div class="flex-row hori-center" style="margin-left:auto">
+          <!-- <img src="/static/imgs/title.png" /> -->
+          <div class="flex-row hori-center" style>
             <div class="nav-button" @click="goTop()">
               <h1>首页</h1>
             </div>
@@ -15,7 +15,7 @@
               <h1>关于</h1>
             </div>
             <div class="nav-button" @click="goContact()">
-              <h1>联系我们</h1>
+              <h1>联系</h1>
             </div>
           </div>
           <!-- 登录注册 -->
@@ -145,72 +145,96 @@
     <!-- ============body ==================== -->
     <div id="body" class="body">
       <!-- 第一块 -->
-      <div class="body-one flex-col">
-        <h3>Me</h3>
-
-        <div class="flex-row">
-          <img src="/static/imgs/me2.jpg" alt="It's Me" width="25%" height="450px" />
-          <img src="/static/imgs/words01.png" alt="My Words" width="75%" height="450px" />
+      <div class="body-two" style="margin-top:5rem">
+        <div style="padding-top:80px" class="flex-row menu-line">
+          <div class="menuL" @click="toItemA">
+            花里胡哨
+            <br />
+            <p>Play</p>
+          </div>
+          <div class="menuL" @click="toItemB">
+            幸运日记
+            <br />
+            <p>DIARY</p>
+          </div>
+          <div class="menuL" @click="toItemC">
+            点墨书屋
+            <br />
+            <p>BOOK</p>
+          </div>
+          <!-- <div class="menuL" @click="toItemD">联系我</div> -->
         </div>
       </div>
-
-      <h3>Good {{dayTime}}</h3>
 
       <!-- 第二块 -->
-      <div class="body-two">
-        <div style="padding-top:80px" class="flex-col">
-          <div class="menuL" @click="toItemA">欢迎投稿</div>
-          <div class="menuL" @click="toItemB">幸运记事</div>
-          <div class="menuL" @click="toItemC">微小说</div>
-          <div class="menuL" @click="toItemD">联系我</div>
+      <div class="body-one flex-col" style="align-items: center">
+        <h3 style="color:#000000;cursor:point">Me</h3>
+        <br />
+        <div class="line"></div>
+
+        <div id="m_photo" class="flex-row">
+          <img src="/static/imgs/me2.jpg" alt="It's Me" width="330px" height="450px" />
+          <div class="aboutMe">
+            <p>我们可以欺瞒别人</p>
+            <p>却无法欺瞒自己</p>
+            <p>当我们走向枝繁叶茂的五月</p>
+            <p>青春就不再是一个谜</p>
+            <p>向上的路</p>
+            <p>总是坎坷又崎岖</p>
+            <!-- <p>要永远保持最初的浪漫</p>
+            <p>有人悲哀</p>
+            <p>有人欣喜</p>-->
+            <p>当我们跨越了一座高山</p>
+            <p>也就跨越了一个真实的自己</p>
+          </div>
         </div>
+        <!-- 根据时间显示问候语 -->
+        <!-- <h3 style="color:#000000">Good {{dayTime}}</h3>-->
       </div>
+
+      <div id="sudoku-demo" class="demo">
+       
+
+        <!-- <button @click="shuffle">Shuffle</button> -->
+        <transition-group name="cell" tag="div" class="container">
+          <div v-for="cell in cells" :key="cell.id" class="cell">{{ cell.number }}</div>
+        </transition-group>
+      </div>
+
       <!-- 第三块 -->
       <div class="body-three flex-col">
-        <h3>Days</h3>
+        <h3 style="color:#000">Days</h3>
         <br />
         <br />
         <div>
-          <a-row :gutter="120">
+          <a-row :gutter="40">
             <a-col :span="8">
-              <a-card hoverable>
-                <img height="450px" alt="example" src="/static/imgs/photo.jpg" slot="cover" />
-                <a-card-meta title="Europe Street beat">
-                  <template slot="description">
-                    <a-rate :defaultValue="4.5" allowHalf />
-                  </template>
-                </a-card-meta>
-              </a-card>
+              <img class="col3" src="/static/imgs/portfolio-img1.jpg" />
             </a-col>
             <a-col :span="8">
-              <a-card hoverable>
-                <img height="450px" alt="example" src="/static/imgs/photo.jpg" slot="cover" />
-                <a-card-meta title="Europe Street beat">
-                  <template slot="description">
-                    <a-rate :defaultValue="4" allowHalf />
-                  </template>
-                </a-card-meta>
-              </a-card>
+              <img class="col3" src="/static/imgs/portfolio-img2.jpg" />
             </a-col>
             <a-col :span="8">
-              <a-card hoverable>
-                <img height="450px" alt="example" src="/static/imgs/photo.jpg" slot="cover" />
-                <a-card-meta title="Europe Street beat">
-                  <template slot="description">
-                    <a-rate :defaultValue="3.5" allowHalf />
-                  </template>
-                </a-card-meta>
-              </a-card>
+              <img class="col3" src="/static/imgs/portfolio-img3.jpg" />
+            </a-col>
+          </a-row>
+
+          <a-row :gutter="40" style="margin-top:40px">
+            <a-col :span="12">
+              <img class="col2" src="/static/imgs/portfolio-img4.jpg" />
+            </a-col>
+            <a-col :span="12">
+              <img class="col2" src="/static/imgs/portfolio-img5.jpg" />
             </a-col>
           </a-row>
         </div>
       </div>
 
       <!-- 最后一块 -->
-      <div class="flex-col" style=" align-items: center">
+      <div class="flex-col last-div" style=" align-items: center;padding-top:2rem">
         <h3>Get In Touch</h3>
 
-        <div class="flex-row" style="margin:1rem 0">
+        <div class="flex-row" style="margin:2rem 0">
           <a-popover title="支付宝收款码">
             <template slot="content">
               <img src="/static/imgs/aliCode.jpg" width="200px" height="200px" />>
@@ -237,22 +261,12 @@
           <div style></div>
         </div>
 
-        <div style="width:50%;margin:2rem auto">
-          <a-textarea placeholder="写下诗和远方" :rows="5" />
+        <div style="width:60%;margin:2rem auto">
+          <a-textarea allowClear placeholder="写下诗和远方..." :rows="6" />
         </div>
         <div style="margin:2rem auto">
-          <a-button ghost icon="thunderbolt">SEND</a-button>
+          <a-button ghost icon="thunderbolt" @click="test">SEND</a-button>
         </div>
-
-        <!-- <div class="line" style="width:100px;margin-top:-30px"></div> -->
-
-        <!-- <h2>1944522054@qq.com</h2>
-          <div class="text-middle" style="textAlign:center">
-            邮箱:1944522054@qq.com
-            <br />手机号:17863129132
-            <br />微信:17863129132
-            <br />QQ:1944522054
-        </div>-->
       </div>
     </div>
 
@@ -265,7 +279,7 @@
         <a-icon type="facebook" class="foot-icon" />
       </div>
       <div style="margin-left:auto">
-        <p>Copyright © 2019.guowenhao. All rights reserved</p>
+        <p>Copyright © 2019.wenhao.guo . All rights reserved</p>
       </div>
     </div>
   </div>
@@ -273,6 +287,8 @@
 
 <script>
 import Slider from "../base/Slider";
+import _ from "lodash/lodash";
+import { getInfo } from "../api";
 export default {
   name: "HelloWorld",
   components: {
@@ -281,6 +297,12 @@ export default {
   data() {
     return {
       winHeight: window.innerHeight,
+      cells: Array.apply(null, { length: 81 }).map(function(_, index) {
+        return {
+          id: index,
+          number: (index % 9) + 1
+        };
+      }),
       is_bg: true,
       imgs: [
         { src: "/static/imgs/banner1.jpg" },
@@ -317,7 +339,8 @@ export default {
         "非洲"
       ],
       selectedTags: [],
-      dayTime: ""
+      dayTime: "",
+      moveMe: false
     };
   },
 
@@ -327,9 +350,19 @@ export default {
   mounted() {
     // this.$refs.head.style.height = this.winHeight + "px";
     this.setDayTime();
+    this.shuffle();
+    
+    console.log(this.$store.state.text)
   },
   methods: {
+    shuffle: function() {
+      setTimeout(() => {
+        this.cells = _.shuffle(this.cells);
+        this.shuffle();
+      }, 4000);
+    },
     setDayTime() {
+      //设置问候语
       var time = new Date().getHours();
       if (time > 5 && time < 11) {
         this.dayTime = "  Morning !";
@@ -342,8 +375,48 @@ export default {
       }
     },
 
+    showMe(type) {
+      if (type == "out" && !this.moveMe) {
+        this.moveMe = true;
+        let mp = document.querySelector("#m_photo");
+        mp.style.marginLeft = "-500px";
+        //this.changePosition("#m_photo", "marginLeft", -30, "px", 10, 50);
+      }
+
+      if (type == "in" && this.moveMe) {
+        this.moveMe = false;
+        let mp = document.querySelector("#m_photo");
+        mp.style.marginLeft = "0px";
+        // this.changePosition("#m_photo", "marginLeft", 30, "px", 10, 50);
+      }
+    },
+
+    test() {
+      let url = "https://api.github.com/users/111";
+      // this.$ajax.get(url).then(res=>{
+      //   console.log(res)
+      // });
+      getInfo(url).then(res => {
+        console.log(res);
+      });
+    },
+
+    // 缓慢迭代变化样式，domID，样式名称，每次修改的值，单位名称，修改次数,时间
+    changePosition(id, css, value, unit, times, time) {
+      let mp = document.querySelector(id);
+      let n = 0; //储存已经执行的次数
+
+      (function doThing() {
+        if (times > 0) {
+          mp.style[css] = value * ++n + unit;
+          times--;
+          setTimeout(doThing, time);
+        }
+      })();
+    },
+
     toItemA() {
-    
+      this.$router.push('/contactme')
     },
     toItemB() {
       this.$router.push("/myworld");
@@ -429,48 +502,91 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss" type="text/css">
 .menuL {
-  margin: 0 0 5rem 2rem;
+  border: 2px solid #000;
   border-radius: 1rem;
-  height: 50px;
-  width: 60px;
-  font-size: 1rem;
-  padding-right: 5rem;
-  text-align: right;
-  font-weight: 700;
-  color: transparent;
-  background-color: #ffffffde;
+  height: 80px;
+  width: 260px;
+  font-size: 2rem;
+  font-weight: 600;
+  padding-top: 15px;
+  line-height: 30px;
+  color: #000;
+  // background-color: #ffffffde;
   cursor: pointer;
-  transition: all 0.8s ease-out;
+  // transition: all 0.4s ease-out;
+  p {
+    font-size: 1rem;
+    font-weight: 200;
+  }
 }
 
 .menuL:hover {
-  font-size: 5rem;
-  height: 120px;
-  background-color: #e4a828;
-  color: #000000;
-  width: 60%;
+  margin: -2px 0 0 -2px;
+  height: 84px;
+  width: 264px;
+  font-weight: 600;
+  border: 3px solid;
+}
+
+.menuR {
+  border-radius: 75px;
+  height: 150px;
+  width: 150px;
+  font-size: 40px;
+
+  text-align: center;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #ec6628de;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
 }
 
 .body {
   .body-one {
-    height: 600px;
+    height: 700px;
     width: 100%;
-    padding: 8rem 7rem 2rem 7rem;
-    margin-bottom: 10rem;
+    padding: 5rem 7rem 0rem 7rem;
+    margin-bottom: 8rem;
+    .aboutMe {
+      width: 600px;
+      height: 370px;
+      margin-top: 40px;
+      padding: 2rem;
+      border: 3px solid #000000;
+      border-left: 0px;
+    }
   }
   .body-two {
-    height: 600px;
-    margin-top: 3rem;
-    background: no-repeat url("/static/imgs/words02.png");
-    background-size: cover;
+    height: 300px;
+    margin-top: 2rem;
+    padding: 1rem 7rem;
+    .menu-line {
+      display: flex;
+      justify-content: space-around;
+    }
+    // background: no-repeat url("/static/imgs/words02.png");
+    // background-size: cover;
     //background-size: 100% 600px;
   }
   .body-three {
     margin: 2rem auto;
-    padding: 1.4rem 6rem 6rem 6rem;
+    padding: 2rem 12rem 8rem 12rem;
+    .col3 {
+      width: 100%;
+      height: 200px;
+    }
+    .col2 {
+      width: 100%;
+      height: 340px;
+    }
   }
 }
 
+#m_photo {
+  margin-top: 5rem;
+  transition: all 0.8s ease-out;
+}
 .col-bg {
   height: 200px;
 }
@@ -491,13 +607,14 @@ export default {
   justify-items: center;
 }
 
+.last-div {
+  background: linear-gradient(30deg ,#020202 ,#a19f9f)
+}
+
 h3 {
   font-size: 3rem;
   font-weight: 600;
   color: #ffffff;
-}
-.body-one {
-  height: 600px;
 }
 
 .img-bg2 {
@@ -505,7 +622,8 @@ h3 {
   background-size: cover;
 }
 .line {
-  border: 4px solid #ffffff;
+  width: 100%;
+  border: 1px solid #000000;
 }
 
 .head-content-middle {
@@ -577,8 +695,9 @@ h1 {
   z-index: 3;
   width: 100%;
   position: fixed;
-  padding: 0 1.3rem;
+  padding: 1rem 1rem;
   background-color: #0000002d;
+  justify-content: space-between;
 }
 .head-content-content {
   position: absolute;
@@ -590,10 +709,44 @@ h1 {
 .flex-row {
   display: flex;
   flex-direction: row;
+
   /* justify-items: center; */
 }
 .header {
   width: 100%;
   background-repeat: no-repeat;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 238px;
+  margin-top: 10px;
+}
+.cell {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #aaa;
+  margin-right: -1px;
+  margin-bottom: -1px;
+}
+.cell:nth-child(3n) {
+  margin-right: 0;
+}
+.cell:nth-child(27n) {
+  margin-bottom: 0;
+}
+.cell-move {
+  transition: transform 1s;
+}
+.demo {
+  display: flex;
+  flex-direction: column;
+  // justify-items: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
 }
 </style>

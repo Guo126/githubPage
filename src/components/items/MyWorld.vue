@@ -307,11 +307,17 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style scoped lang="scss" type="text/css">
+$color-black:#000;
+
 .bg {
+  // $color-black:#000;
   width: 100%;
-  background: no-repeat url("/static/imgs/banner3.jpg");
-  background-size: cover;
+  background: radial-gradient(200% 100% at bottom center, #f7f7b6 ,#e96f92 ,#1b2947);
+  background: radial-gradient(220% 105% at top center, #1b2947 10% ,#75517d 40% ,#e96f92 65% )
+
+  /* background: no-repeat url("/static/imgs/banner3.jpg");
+  background-size: cover; */
 }
 .flex-row {
   display: flex;
