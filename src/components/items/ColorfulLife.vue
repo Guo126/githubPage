@@ -1,16 +1,24 @@
 <template>
-  <section>
-    <section class="main">
-      <loading :time="time"></loading>
-      <a-row :gutter="16">
-        <a-col :span = "8">
+ 
+    
+    <!-- <div style="height: 30%;width:100%;"> -->
+      <router-view></router-view>
+    <!-- </div> -->
+   
+    <!-- <colorful> -->
+      <!-- <button @click="toCard()">click</button> -->
+
+      <!-- <loading :time="time"></loading> -->
+
+      <!-- <a-row :gutter="16">
+        <a-col :span="8">
           <a-card v-for="(item,index) in items" :key="index" title="item.title" :bordered="false">
-            <img :src="item.img">
+            <img :src="item.img" />
           </a-card>
         </a-col>
-      </a-row>
-    </section>
-    <!-- <section class="flex-col">
+      </a-row> -->
+
+      <!-- <section class="flex-col">
       <div>
         <a-card title="Card Title">
           <a href="#" slot="extra">more</a>
@@ -21,37 +29,18 @@
         </a-card>
       </div>
       
-    </section>-->
-  </section>
+      </section>-->
+    <!-- </colorful> -->
+ 
 </template>
 <script>
-import Loading from "../../base/Loading";
+
 export default {
-  data() {
-    return {
-      time: 3000,
-      items:[
-        {
-          title:"炫酷Loading动画",
-          img:''
-        }
-      ]
-    };
-  },
-  components: {
-    loading: Loading
-  },
-  methods: {
-    addOne() {
-      this.$store.commit("addOne", 1);
-    },
-    async() {
-      this.$store.dispatch("addOneAsync", 2);
-    }
-  }
+  
 };
 </script>
 <style scoped>
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -64,8 +53,8 @@ export default {
   background: linear-gradient(40deg, #df8d57, #45df97);
   background-size: cover;
   width: 100%;
-  height: 100%;
-  z-index: -1;
+  /* height: 100%; */
+  /* z-index: -1; */
   position: fixed;
 }
 .row {

@@ -2,9 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import MyWorld from '@/components/items/MyWorld'
-import ContactMe from '@/components/items/ContactMe'
+import colorfulLife from '@/components/items/colorfulLife'
 import MyZoom from '@/components/items/MyZoom'
 import MyStory from '@/components/items/Story/readStory'
+import CardHover from '@/components/items/Shows/cardHover'
+import List from '@/components/items/Shows/list'
 
 Vue.use(Router)
 
@@ -21,9 +23,21 @@ export default new Router({
       component: MyWorld
     },
     {
-      path: '/contactme',
-      name: 'ContactMe',
-      component: ContactMe
+      path: '/colorfulLife',
+      name: 'colorfulLife',
+      component: colorfulLife,
+      children:[
+        {
+          path: '/',
+          name:'list',
+          component:List
+        },
+        {
+          path: '/colorfulLife/cardHover',
+          name:'cardHover',
+          component:CardHover
+        }
+      ]
     },
     {
       path: '/myzoom',
@@ -34,6 +48,11 @@ export default new Router({
       path: '/readStory',
       name: 'MyStory',
       component: MyStory
+    },
+    {
+      path: '/cardHover',
+      name: 'cardHover',
+      component: CardHover
     },
   ]
 })

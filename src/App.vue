@@ -56,6 +56,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   background: #ffffff;
+  height: 100%;
+  width: 100%;
 }
 
 ::-webkit-scrollbar {
