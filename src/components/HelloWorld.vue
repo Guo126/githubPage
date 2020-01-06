@@ -416,7 +416,7 @@ export default {
     },
 
     toItemA() {
-      this.$router.push('/contactme')
+      this.$router.push('/colorfulLife')
     },
     toItemB() {
       this.$router.push("/myworld");
@@ -425,7 +425,7 @@ export default {
       this.$router.push("/myzoom");
     },
     toItemD() {
-      this.$router.push("/contactme");
+      this.$router.push("/colorfulLife");
     },
     //选择标签
     handleChange(tag, checked) {

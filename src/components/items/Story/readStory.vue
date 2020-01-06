@@ -63,7 +63,7 @@ section {
   height: 100%;
   width: 100%;
   .main {
-    height: 100%;
+    // height: 100%;
     width: 100%;
     padding: 2rem 4rem;
     background: #0e0e0e;
