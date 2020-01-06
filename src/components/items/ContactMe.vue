@@ -1,14 +1,12 @@
 <template>
   <section>
     <section class="main">
-      <loading :time="time"></loading>
-      <a-row :gutter="16">
-        <a-col :span = "8">
-          <a-card v-for="(item,index) in items" :key="index" title="item.title" :bordered="false">
-            <img :src="item.img">
-          </a-card>
-        </a-col>
-      </a-row>
+      <loading v-if="isLoading"></loading>
+      <section class="content">
+        <div class="card" v-for="(item,index) in items" :key="index" >
+          
+        </div>
+      </section>
     </section>
     <!-- <section class="flex-col">
       <div>
@@ -29,19 +27,33 @@ import Loading from "../../base/Loading";
 export default {
   data() {
     return {
+      isLoading: true,
       time: 3000,
-      items:[
+      items: [
         {
-          title:"炫酷Loading动画",
-          img:''
+          title: "炫酷Loading动画",
+          img: "./static/imgs/cool_loading.png"
         }
       ]
     };
+  },
+  mounted() {
+    this.setImg();
+    setTimeout(() => {
+      
+      this.isLoading = false;
+    }, this.time);
   },
   components: {
     loading: Loading
   },
   methods: {
+    setImg() {
+      let cards = document.getElementsByClassName("card");
+      cards.forEach((item,index)=>{
+        item.style.backgroundImage = this.items[index].img
+      })
+    },
     addOne() {
       this.$store.commit("addOne", 1);
     },
@@ -68,11 +80,15 @@ export default {
   z-index: -1;
   position: fixed;
 }
-.row {
-  width: 100%;
-  height: 900px;
-  /* background: transparent */
-  background: no-repeat url("/static/imgs/mask.png");
-  background-size: cover;
+.content {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-items: center
+}
+
+.card {
+  width: 300px;
+  height: 160px
 }
 </style>
