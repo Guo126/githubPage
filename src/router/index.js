@@ -7,6 +7,10 @@ import MyZoom from '@/components/items/MyZoom'
 import MyStory from '@/components/items/Story/readStory'
 import CardHover from '@/components/items/Shows/cardHover'
 import List from '@/components/items/Shows/list'
+import Loading from '@/components/items/Shows/Loading'
+import ColorBg from '@/components/items/Shows/colorBg'
+import CoolSearch from '@/components/items/Shows/coolSearch'
+
 
 Vue.use(Router)
 
@@ -28,7 +32,7 @@ export default new Router({
       component: colorfulLife,
       children:[
         {
-          path: '/',
+          path: '/colorfulLife/list',
           name:'list',
           component:List
         },
@@ -36,6 +40,21 @@ export default new Router({
           path: '/colorfulLife/cardHover',
           name:'cardHover',
           component:CardHover
+        },
+        {
+          path: '/colorfulLife/loading',
+          name:'loading',
+          component:Loading
+        },
+        {
+          path: '/colorfulLife/colorBg',
+          name:'colorBg',
+          component:ColorBg
+        },
+        {
+          path: '/colorfulLife/coolSearch',
+          name:'CoolSearch',
+          component:CoolSearch
         }
       ]
     },
@@ -49,10 +68,6 @@ export default new Router({
       name: 'MyStory',
       component: MyStory
     },
-    {
-      path: '/cardHover',
-      name: 'cardHover',
-      component: CardHover
-    },
+   
   ]
 })

@@ -1,17 +1,30 @@
 <template>
   <section>
+    <a-back-top />
     <div :class="[{'preloader':true,'active':active}]">
       <div ref="num" :class="[{'count':true,'hide':hide}]">0</div>
     </div>
     <div>
       <colorful>
         <div>
-          <div class="card" v-for="(item,index) in items" :key="index">
-            <h2>{{item.title}}</h2>
-            <img class="item-img" :src="item.img">
+          <div class="back">
+            <a-button type="primary" @click="goBack()" ghost style="width:80px">
+              <a-icon type="left" />首页
+            </a-button>
+          </div>
+          <div class="main">
+            <div
+              class="card"
+              v-for="(item,index) in items"
+              :key="index"
+              :style="{backgroundImage:`url(${item.img})`,backgroundSize:'cover'}"
+            >
+              <div class="card-content" @click="checkItem(item)">{{item.title}}</div>
+            </div>
           </div>
         </div>
-        <button @click="toCard()">click</button>
+
+        <!-- <button @click="toCard()">click</button> -->
       </colorful>
     </div>
   </section>
@@ -24,11 +37,38 @@ export default {
     return {
       time: 3000,
       hide: false,
-      active: false,
+      active: true,
       items: [
         {
-          title: "炫酷Loading动画",
-          img: "./static/imgs/cool_loading.png"
+          title: "炫酷Loading",
+          img: "./static/imgs/cool_loading.png",
+          url: "/colorfulLife/loading"
+        },
+        {
+          title: "鼠标悬浮Card效果",
+          img: "./static/imgs/cool_card.png",
+          url: "/colorfulLife/cardHover"
+        },
+        {
+          title: "永不停歇的渐变",
+          img: "./static/imgs/cool_bg.png",
+          name: "colorBg",
+          params: {
+            origin: "colorBg"
+          }
+        },
+        {
+          title: "绚烂霓虹灯",
+          img: "./static/imgs/cool_bg.png",
+          name: "colorBg",
+          params: {
+            origin: "colorBtn"
+          }
+        },
+        {
+          title: "简约大气搜索",
+          img: "./static/imgs/cool_search.png",
+          url: "/colorfulLife/coolSearch"
         }
       ]
     };
@@ -38,6 +78,7 @@ export default {
     colorful: ColorBg
   },
   mounted() {
+    this.active = this.$route.params.active || true;
     this.load();
   },
   methods: {
@@ -51,6 +92,7 @@ export default {
       this.$router.push("/colorfulLife/cardHover");
     },
     load() {
+      //预加载界面
       let numDiv = this.$refs.num;
       let counter = setInterval(() => {
         let num = parseInt(numDiv.textContent);
@@ -61,6 +103,17 @@ export default {
           this.active = true;
         }
       }, 30);
+    },
+    checkItem(item) {
+      if(item.url){
+      this.$router.push(item.url);
+
+      }else{
+        this.$router.push({name:item.name,params:item.params})
+      }
+    },
+    goBack() {
+      this.$router.go(-1);
     }
   }
 };
@@ -82,6 +135,12 @@ export default {
   height: 100%;
   background: #070707;
   z-index: 100;
+}
+
+.back {
+  position: fixed;
+  padding: 2rem 0 0 6rem;
+  text-align: left;
 }
 
 .preloader:before {
@@ -122,18 +181,58 @@ export default {
   padding: 5rem;
   display: flex;
   flex-direction: column;
-  justify-items: center
+  justify-items: center;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 9rem 0;
 }
 
 .card {
-  width: 300px;
-  height: 160px;
-  /* padding: 10%; */
+  border-radius: 5px;
+  width: 700px;
+  height: 360px;
+  margin-bottom: 10%;
+  position: relative;
+}
+
+.card-content {
+  text-align: center;
+  color: whitesmoke;
+  line-height: 360px;
+  font-size: 3.5rem;
+  z-index: 5;
+  background: #070707b6;
+  border-radius: 5px;
+  opacity: 0;
+  transition: ease-in 0.6s;
+  cursor: pointer;
+}
+
+.card-content:hover {
+  opacity: 1;
 }
 
 .item-img {
-  
-  width: 80%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background: #03030300;
 }
+
+/* .card ::before {
+  content: '';
+  border-radius: 5px;
+  width: 700px;
+  height: 360px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: #0707079f;
+  z-index: 5
+} */
 </style>

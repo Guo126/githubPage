@@ -53,7 +53,7 @@ section
     content: ''
     width: 200px
     height: 200px
-    position: absolute
+    position: absolute 
     left: 0
     top: -10px
     border-radius: 50%

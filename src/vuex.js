@@ -63,7 +63,7 @@ const install = (v)=>{
     Vue = v;
     Vue.mixin({
         beforeCreate(){
-            console.log(this.$options.name)  //循环组件
+            //console.log(this.$options.name)  //循环组件
             if(this.$options && this.$options.store){    //root
                 this.$store = this.$options.store;
             }else{              //child

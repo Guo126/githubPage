@@ -352,7 +352,7 @@ export default {
     this.setDayTime();
     this.shuffle();
     
-    console.log(this.$store.state.text)
+    //console.log(this.$store.state.text)
   },
   methods: {
     shuffle: function() {
@@ -397,7 +397,7 @@ export default {
       //   console.log(res)
       // });
       getInfo(url).then(res => {
-        console.log(res);
+        //console.log(res);
       });
     },
 
@@ -416,7 +416,8 @@ export default {
     },
 
     toItemA() {
-      this.$router.push('/colorfulLife')
+      
+      this.$router.push({name:'list',params:{active:false}})
     },
     toItemB() {
       this.$router.push("/myworld");
@@ -424,9 +425,7 @@ export default {
     toItemC() {
       this.$router.push("/myzoom");
     },
-    toItemD() {
-      this.$router.push("/colorfulLife");
-    },
+    
     //选择标签
     handleChange(tag, checked) {
       const { selectedTags } = this;

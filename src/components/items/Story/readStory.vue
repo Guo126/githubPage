@@ -48,7 +48,7 @@ export default {
     init() {
       let t_tag = this.$route.params.tag;
       this.story = this.story.filter(item => item.tag == t_tag);
-      console.log(this.story);
+      //console.log(this.story);
     },
     showStory(item) {
       this.c_story = item;

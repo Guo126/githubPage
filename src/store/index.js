@@ -34,7 +34,7 @@ export default new Vuex.Store({
     actions: {   //异步调用
         addOneAsync({commit,dispatch},payload){
             setTimeout(()=>{
-                console.log("suhahda")
+               // console.log("suhahda")
               
                 commit("addOne",payload)
             },1000)
