@@ -59,7 +59,7 @@ export default {
         },
         {
           title: "绚烂霓虹灯",
-          img: "./static/imgs/cool_bg.png",
+          img: "./static/imgs/cool_btn.png",
           name: "colorBg",
           params: {
             origin: "colorBtn"
@@ -78,7 +78,8 @@ export default {
     colorful: ColorBg
   },
   mounted() {
-    this.active = this.$route.params.active || true;
+    
+    this.active = this.$route.params.active != undefined ?  this.$route.params.active : true;
     this.load();
   },
   methods: {
@@ -149,7 +150,7 @@ export default {
   text-transform: uppercase;
   font-size: 12em;
   font-weight: 700;
-  color: rgba(225, 225, 225, 0.03);
+  color: rgba(225, 225, 225, 0.123);
 }
 
 .active {
@@ -224,15 +225,5 @@ export default {
   background: #03030300;
 }
 
-/* .card ::before {
-  content: '';
-  border-radius: 5px;
-  width: 700px;
-  height: 360px;
-  top: 0;
-  left: 0;
-  position: absolute;
-  background: #0707079f;
-  z-index: 5
-} */
+
 </style>
