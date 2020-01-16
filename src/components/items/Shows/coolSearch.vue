@@ -1,9 +1,9 @@
 <template>
   <section class="container">
     <div class="back">
-      <a-button type="primary" ghost @click="goBack()">
-        <a-icon type="left" />返回
-      </a-button>
+      <div @click="goBack()" class="back-button">
+        <a-icon type="left" />&nbsp;BACK
+      </div>
     </div>
     <div class="search-box">
       <input class="search-text" type="text" name placeholder="Search..." />
@@ -17,7 +17,7 @@
 export default {
   methods: {
     goBack() {
-      this.$router.go(-1);
+      this.$router.push('/colorfulLife/list');
     }
   }
 };
@@ -28,6 +28,15 @@ export default {
   padding: 2rem 0 0 6rem;
 
   text-align: left;
+}
+.back-button {
+  padding: 5px 8px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  font-size: 18px;
 }
 .container {
   background: #2f3640;

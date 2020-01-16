@@ -27,7 +27,7 @@ axios.get = function (url, params = {}) {
 }
 
 axios.interceptors.response.use(response => {
-  return response.data // 只拿后台返回的json数据
+  return response.data // 只拿后台BACK的json数据
 }, error => Promise.reject(error.response))
 
 export default axios

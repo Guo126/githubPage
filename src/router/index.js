@@ -10,7 +10,7 @@ import List from '@/components/items/Shows/list'
 import Loading from '@/components/items/Shows/Loading'
 import ColorBg from '@/components/items/Shows/colorBg'
 import CoolSearch from '@/components/items/Shows/coolSearch'
-
+import GetColor from '@/components/items/Shows/getColors/getColors'
 
 Vue.use(Router)
 
@@ -55,6 +55,11 @@ export default new Router({
           path: '/colorfulLife/coolSearch',
           name:'CoolSearch',
           component:CoolSearch
+        },
+        {
+          path: '/colorfulLife/getColor',
+          name:'GetColor',
+          component:GetColor
         }
       ]
     },

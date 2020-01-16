@@ -43,7 +43,7 @@
         <div class="flex-row" style="padding:0 0.5rem 1rem 0.5rem">
           <div>
             <a-button type="primary" @click="showDrawer" ghost>目录</a-button>
-            <a-button type="primary" @click="goBack" ghost>返回</a-button>
+            <a-button type="primary" @click="goBack" ghost>BACK</a-button>
           </div>
           <div style="margin-left:auto">
             <a-button type="primary" @click="save" ghost>保存</a-button>

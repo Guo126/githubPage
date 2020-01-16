@@ -8,9 +8,9 @@
       <colorful>
         <div>
           <div class="back">
-            <a-button type="primary" @click="goBack()" ghost style="width:80px">
-              <a-icon type="left" />首页
-            </a-button>
+            <div @click="goBack()"  class="back-button">
+              <a-icon type="left" />&nbsp;首页
+            </div>
           </div>
           <div class="main">
             <div
@@ -39,6 +39,11 @@ export default {
       hide: false,
       active: true,
       items: [
+        {
+          title: "Get Color",
+          img: "./static/imgs/cool_getColor.png",
+          url: "/colorfulLife/getColor"
+        },
         {
           title: "炫酷Loading",
           img: "./static/imgs/cool_loading.png",
@@ -114,7 +119,7 @@ export default {
       }
     },
     goBack() {
-      this.$router.go(-1);
+      this.$router.push('/');
     }
   }
 };
@@ -124,6 +129,16 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.back-button {
+  padding: 5px 8px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  font-size: 18px;
 }
 
 .preloader {
