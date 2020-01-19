@@ -1,34 +1,41 @@
 <template>
   <section class="main">
-    <div class="line">
-      <div class="back">
-        <div @click="goBack()" class="back-button">
-          <a-icon type="left" />&nbsp;BACK
+    <section class="main">
+      <div class="line">
+        <div class="back">
+          <div @click="goBack()" class="back-button">
+            <a-icon type="left" />&nbsp;BACK
+          </div>
         </div>
       </div>
-    </div>
-    <a-row>
-      <a-col v-for="(color,index) in colors" :key="index">
-        <section class="color-row">
-          <div
-            class="color-card"
-            v-for="(item,cindex) in color"
-            :key="cindex"
-            @click="getColor(item.code)"
-          >
-            <span>{{item.name}}</span>
-          </div>
-        </section>
-      </a-col>
-    </a-row>
-    <div class="line line-foot">
-      <span>Copy By Flat UI Palette</span>
-    </div>
+      <a-row>
+        <a-col v-for="(color,index) in colors" :key="index">
+          <section class="color-row">
+            <div
+              class="color-card"
+              v-for="(item,cindex) in color"
+              :key="cindex"
+              @click="getColor(item.code)"
+            >
+              <span>{{item.name}}</span>
+            </div>
+          </section>
+        </a-col>
+      </a-row>
+      <div class="line line-foot">
+        <span>Copy By Flat UI Palette</span>
+      </div>
+    </section>
+    <section class="main top">
+      <div class="middle">
+        <span></span>
+      </div>
+    </section>
   </section>
 </template>
 <script>
 import { colors, slogan } from "./colors";
-import Clipboard from 'clipboard';
+import Clipboard from "clipboard";
 export default {
   data() {
     return {
@@ -46,10 +53,11 @@ export default {
       this.$router.push("/colorfulLife/list");
     },
     getColor(code) {
-      var clipboard = new Clipboard(".color-card",{    //复制剪贴板
-          text: function(){
-              return code
-          }
+      var clipboard = new Clipboard(".color-card", {
+        //复制剪贴板
+        text: function() {
+          return code;
+        }
       });
 
       clipboard.on("success", function(e) {
