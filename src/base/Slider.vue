@@ -38,30 +38,59 @@ export default {
   display: flex;
   flex-direction: row;
 }
+@media screen and (min-width: 1000px) {
+  .head-content-middle {
+    line-height: 1.5rem;
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    .text-head {
+      margin-top: 20%;
+      font-size: 7rem;
+      font-weight: 500;
+      color: rgb(255, 255, 255);
+    }
+    .line {
+      border: 4px solid #ffffff;
+      margin: 0 20%;
+    }
+    .text-foot {
+      width: 50%;
+      margin: 0 auto;
+      margin-top: 5rem;
+      font-size: 2.4rem;
+      font-weight: 500;
+      color: rgb(255, 255, 255);
+    }
+  }
+}
 
-.head-content-middle {
-  line-height: 1.5rem;
-  z-index: 2;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  .text-head {
-    margin-top: 20%;
-    font-size: 7rem;
-    font-weight: 500;
-    color: rgb(255, 255, 255);
-  }
-  .line {
-    border: 4px solid #ffffff;
-    margin: 0 20%;
-  }
-  .text-foot {
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 5rem;
-    font-size: 2.4rem;
-    font-weight: 500;
-    color: rgb(255, 255, 255);
+@media screen and (max-width: 600px) {
+  .head-content-middle {
+    line-height: 1.5rem;
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    .text-head {
+      margin-top: 40%;
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgb(196, 20, 20);
+    }
+    .line {
+      border: 2px solid #ffffff;
+      margin: 0 10%;
+    }
+    .text-foot {
+      width: 70%;
+      margin: 0 auto;
+      margin-top: 3rem;
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgb(255, 255, 255);
+    }
   }
 }
 </style>

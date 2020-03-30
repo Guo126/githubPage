@@ -59,6 +59,9 @@ export default {
   height: 100%;
   width: 100%;
 }
+img {
+  max-width: 100%;
+}
 
 ::-webkit-scrollbar {
   display: none;

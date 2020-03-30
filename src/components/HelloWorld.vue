@@ -11,6 +11,9 @@
             <div class="nav-button" @click="goTop()">
               <h1>首页</h1>
             </div>
+            <!-- <div class="nav-button" @click="goDays()">
+              <h1>点滴</h1>
+            </div>-->
             <div class="nav-button" @click="goAbout('header')">
               <h1>关于</h1>
             </div>
@@ -139,14 +142,15 @@
           </div>
         </div>
       </div>
-      <slider :imgs="imgs"></slider>
+      <videoCom></videoCom>
+      <!-- <slider :imgs="imgs"></slider> -->
     </div>
 
     <!-- ============body ==================== -->
     <div id="body" class="body">
       <!-- 第一块 -->
       <div class="body-two" style="margin-top:5rem">
-        <div style="padding-top:80px" class="flex-row menu-line">
+        <div class="menu-line">
           <div class="menuL" @click="toItemA">
             花里胡哨
             <br />
@@ -168,66 +172,84 @@
 
       <!-- 第二块 -->
       <div class="body-one flex-col" style="align-items: center">
-        <h3 style="color:#000000;cursor:point">Me</h3>
+        <h3 style="color:#000000;cursor:pointer">Me</h3>
         <br />
         <div class="line"></div>
 
-        <div id="m_photo" class="flex-row">
-          <img src="/static/imgs/me2.jpg" alt="It's Me" width="330px" height="450px" />
-          <div class="aboutMe">
+        <div id="m_photo" class="myPart">
+          <!-- <router-link :to="{path:'/me'}" style="width:330px;height:450px"> -->
+          <img
+            id="myP"
+            class="myPhoto"
+            src="/static/imgs/me2.jpg"
+            alt="It's Me"
+            width="330px"
+            height="450px"
+          />
+          <!-- </router-link> -->
+          <div id="myM" class="aboutMe">
             <p>我们可以欺瞒别人</p>
             <p>却无法欺瞒自己</p>
             <p>当我们走向枝繁叶茂的五月</p>
             <p>青春就不再是一个谜</p>
             <p>向上的路</p>
             <p>总是坎坷又崎岖</p>
-            <!-- <p>要永远保持最初的浪漫</p>
-            <p>有人悲哀</p>
-            <p>有人欣喜</p>-->
             <p>当我们跨越了一座高山</p>
             <p>也就跨越了一个真实的自己</p>
           </div>
         </div>
-        <!-- 根据时间显示问候语 -->
-        <!-- <h3 style="color:#000000">Good {{dayTime}}</h3>-->
       </div>
 
-      <div id="sudoku-demo" class="demo">
-       
+      <!-- 滚动视差 -->
+      <div class="slideBg" style="background-image:url('/static/imgs/sea.jpg')">
+        <div class="content">&nbsp;我喜欢大海，</div>
+      </div>
+      <div class="slideBg" style="background-image:url('/static/imgs/city.jpg')">
+        <div class="content">&nbsp;喜欢建筑，</div>
+      </div>
+      <div class="slideBg" style="background-image:url('/static/imgs/game03.jpg')">
+        <div class="content">&nbsp;当然，少不了史诗。</div>
+      </div>
 
-        <!-- <button @click="shuffle">Shuffle</button> -->
+      <!-- <div id="sudoku-demo" class="demo">
         <transition-group name="cell" tag="div" class="container">
           <div v-for="cell in cells" :key="cell.id" class="cell">{{ cell.number }}</div>
         </transition-group>
-      </div>
+      </div>-->
 
       <!-- 第三块 -->
       <div class="body-three flex-col">
         <h3 style="color:#000">Days</h3>
         <br />
         <br />
-        <div>
-          <a-row :gutter="40">
-            <a-col :span="8">
-              <img class="col3" src="/static/imgs/portfolio-img1.jpg" />
-            </a-col>
-            <a-col :span="8">
-              <img class="col3" src="/static/imgs/portfolio-img2.jpg" />
-            </a-col>
-            <a-col :span="8">
-              <img class="col3" src="/static/imgs/portfolio-img3.jpg" />
-            </a-col>
-          </a-row>
+        <!-- 图片 -->
+        <a-tooltip placement="right" title="点击进入我的世界！">
+          <div @click="goDays()" style="cursor:pointer">
+            <a-row :gutter="40">
+              <a-col :span="8">
+                <img class="col3" src="/static/imgs/portfolio-img1.jpg" />
+              </a-col>
+              <a-col :span="8">
+                <img class="col3" src="/static/imgs/portfolio-img2.jpg" />
+              </a-col>
+              <a-col :span="8">
+                <img class="col3" src="/static/imgs/portfolio-img3.jpg" />
+              </a-col>
+            </a-row>
 
-          <a-row :gutter="40" style="margin-top:40px">
-            <a-col :span="12">
-              <img class="col2" src="/static/imgs/portfolio-img4.jpg" />
-            </a-col>
-            <a-col :span="12">
-              <img class="col2" src="/static/imgs/portfolio-img5.jpg" />
-            </a-col>
-          </a-row>
-        </div>
+            <a-row :gutter="40" style="margin-top:40px">
+              <a-col :span="12">
+                <img class="col2" src="/static/imgs/portfolio-img4.jpg" />
+              </a-col>
+              <a-col :span="12">
+                <img class="col2" src="/static/imgs/portfolio-img5.jpg" />
+              </a-col>
+            </a-row>
+          </div>
+        </a-tooltip>
+      </div>
+      <div class="slideBg" style="background-image:url('/static/imgs/basketball.jpg')">
+        <div class="content">&nbsp;冲啊，少年！</div>
       </div>
 
       <!-- 最后一块 -->
@@ -257,11 +279,9 @@
             </template>
             <a-icon type="qq" :style="{fontSize:'30px' , color:'#00BFFF'}" class="foot-icon" />
           </a-popover>
-
-          <div style></div>
         </div>
 
-        <div style="width:60%;margin:2rem auto">
+        <div class="textdiv">
           <a-textarea allowClear placeholder="写下诗和远方..." :rows="6" />
         </div>
         <div style="margin:2rem auto">
@@ -271,14 +291,14 @@
     </div>
 
     <!-- =================foot================= -->
-    <div id="foot" class="foot flex-row">
+    <div id="foot" class="foot">
       <div class="icons-list flex-row">
         <a-icon type="weibo-square" class="foot-icon" />
         <a-icon type="github" class="foot-icon" />
         <a-icon type="twitter" class="foot-icon" />
         <a-icon type="facebook" class="foot-icon" />
       </div>
-      <div style="margin-left:auto">
+      <div>
         <p>Copyright © 2019.wenhao.guo . All rights reserved</p>
       </div>
     </div>
@@ -286,13 +306,15 @@
 </template>
 
 <script>
-import Slider from "../base/Slider";
+//  import Slider from "../base/Slider";
+ import videoCom from "../base/video";
 import _ from "lodash/lodash";
 import { getInfo } from "../api";
 export default {
   name: "HelloWorld",
   components: {
-    Slider
+    // Slider,
+    videoCom: ()=>import("../base/video")
   },
   data() {
     return {
@@ -306,9 +328,7 @@ export default {
       is_bg: true,
       imgs: [
         { src: "/static/imgs/banner1.jpg" },
-        { src: "/static/imgs/banner2.jpg" },
-        { src: "/static/imgs/banner3.jpg" },
-        { src: "/static/imgs/banner4.jpg" }
+        { src: "/static/imgs/banner2.jpg" }
       ],
       visible: false,
       confirmLoading: false,
@@ -351,7 +371,8 @@ export default {
     // this.$refs.head.style.height = this.winHeight + "px";
     this.setDayTime();
     this.shuffle();
-    
+    this.scrollAnim();
+
     //console.log(this.$store.state.text)
   },
   methods: {
@@ -415,9 +436,11 @@ export default {
       })();
     },
 
+    goDays() {
+      this.$router.push("/myDays");
+    },
     toItemA() {
-      
-      this.$router.push({name:'list',params:{active:false}})
+      this.$router.push({ name: "list", params: { active: false } });
     },
     toItemB() {
       this.$router.push("/myworld");
@@ -425,7 +448,7 @@ export default {
     toItemC() {
       this.$router.push("/myzoom");
     },
-    
+
     //选择标签
     handleChange(tag, checked) {
       const { selectedTags } = this;
@@ -493,259 +516,69 @@ export default {
           setTimeout(jump, 20);
         }
       })();
+    },
+
+    getEle(name) {
+      return document.getElementById(name);
+    },
+    getEleTop(name) {
+      return document.getElementById(name).getBoundingClientRect().top;
+    },
+
+    //响应式布局
+    scrollAnim() {
+      window.addEventListener("scroll", () => {
+        let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop;
+
+        //标题栏出现
+        if (scrollTop < 200) {
+          this.getEle("title").style.top = 0;
+          this.getEle("title").style.backgroundColor = "#0000002d";
+        }
+        //三个小菜单依次上升
+        if (scrollTop > 300) {
+          this.showMenuA = true;
+          let menus = Array.from(document.getElementsByClassName("menuL"));
+
+          menus[0].classList.add("animated", "rize");
+
+          setTimeout(() => {
+            this.showMenuB = true;
+            menus[1].classList.add("animated", "rize");
+          }, 250);
+          setTimeout(() => {
+            this.showMenuC = true;
+            menus[2].classList.add("animated", "rize");
+          }, 500);
+        }
+
+        //个人信息
+        if (scrollTop > 1000) {
+          this.getEle("myP").classList.add("animated", "slideR");
+          this.getEle("myM").classList.add("animated", "slideL");
+        }
+
+        //days部分的图片
+        if (scrollTop > 4200) {
+          let domsa = Array.from(document.getElementsByClassName("col2"));
+          let domsb = Array.from(document.getElementsByClassName("col3"));
+
+          domsa.forEach(item => {
+            item.style.transform = "scale(1)";
+          });
+
+          domsb.forEach(item => {
+            item.style.transform = "scale(1)";
+          });
+        }
+      });
     }
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss" type="text/css">
-.menuL {
-  border: 2px solid #000;
-  border-radius: 1rem;
-  height: 80px;
-  width: 260px;
-  font-size: 2rem;
-  font-weight: 600;
-  padding-top: 15px;
-  line-height: 30px;
-  color: #000;
-  // background-color: #ffffffde;
-  cursor: pointer;
-  // transition: all 0.4s ease-out;
-  p {
-    font-size: 1rem;
-    font-weight: 200;
-  }
-}
-
-.menuL:hover {
-  margin: -2px 0 0 -2px;
-  height: 84px;
-  width: 264px;
-  font-weight: 600;
-  border: 3px solid;
-}
-
-.menuR {
-  border-radius: 75px;
-  height: 150px;
-  width: 150px;
-  font-size: 40px;
-
-  text-align: center;
-  font-weight: 300;
-  color: #ffffff;
-  background-color: #ec6628de;
-  cursor: pointer;
-  transition: all 0.4s ease-out;
-}
-
-.body {
-  .body-one {
-    height: 700px;
-    width: 100%;
-    padding: 5rem 7rem 0rem 7rem;
-    margin-bottom: 8rem;
-    .aboutMe {
-      width: 600px;
-      height: 370px;
-      margin-top: 40px;
-      padding: 2rem;
-      border: 3px solid #000000;
-      border-left: 0px;
-    }
-  }
-  .body-two {
-    height: 300px;
-    margin-top: 2rem;
-    padding: 1rem 7rem;
-    .menu-line {
-      display: flex;
-      justify-content: space-around;
-    }
-    // background: no-repeat url("/static/imgs/words02.png");
-    // background-size: cover;
-    //background-size: 100% 600px;
-  }
-  .body-three {
-    margin: 2rem auto;
-    padding: 2rem 12rem 8rem 12rem;
-    .col3 {
-      width: 100%;
-      height: 200px;
-    }
-    .col2 {
-      width: 100%;
-      height: 340px;
-    }
-  }
-}
-
-#m_photo {
-  margin-top: 5rem;
-  transition: all 0.8s ease-out;
-}
-.col-bg {
-  height: 200px;
-}
-
-.modal {
-  background: #00000021;
-}
-.foot-icon {
-  font-size: 1.4rem;
-  margin-left: 0.7rem;
-  cursor: pointer;
-}
-.foot {
-  height: 4rem;
-  background-color: black;
-  color: #ffffff;
-  padding: 1rem 10rem;
-  justify-items: center;
-}
-
-.last-div {
-  background: linear-gradient(30deg ,#020202 ,#a19f9f)
-}
-
-h3 {
-  font-size: 3rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.img-bg2 {
-  background-image: url("/static/imgs/me.jpg");
-  background-size: cover;
-}
-.line {
-  width: 100%;
-  border: 1px solid #000000;
-}
-
-.head-content-middle {
-  margin: 20% auto auto 20%;
-  line-height: 1.5rem;
-  z-index: 2;
-  position: absolute;
-}
-.text-head {
-  font-size: 7rem;
-  font-weight: 500;
-  color: rgb(255, 255, 255);
-}
-.text-foot {
-  width: 50%;
-  margin: 0 auto;
-  margin-top: 3rem;
-  font-size: 1rem;
-  font-weight: 400;
-  color: rgb(255, 255, 255);
-}
-
-.body-bg2 {
-  background-color: rgba(40, 180, 166, 0.932);
-  padding: 7rem 8rem 2rem 1rem;
-}
-.hello {
-  position: relative;
-  /* background-color: black; */
-}
-.ant-carousel >>> .slick-slide {
-  text-align: center;
-  overflow: hidden;
-}
-
-.hori-center {
-  margin: auto 0;
-}
-.ver-center {
-  margin: 0 auto;
-}
-.nav-button {
-  /* padding: 0.3rem; */
-  border-radius: 4px;
-  margin-left: 0.7rem;
-  padding-left: 0.4rem;
-  padding-right: 0.4rem;
-  cursor: pointer;
-}
-.nav-button:hover {
-  background: #ffffff;
-}
-.nav-button > h1:hover {
-  color: rgba(0, 0, 0, 0.726);
-}
-h1 {
-  font-size: 1.4rem;
-  color: rgb(255, 255, 255);
-  font-weight: 600;
-  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
-  margin: 0;
-}
-.head-content {
-  /* z-index: -1; */
-  /* position: fixed; */
-  height: 100%;
-}
-.head-content-head {
-  z-index: 3;
-  width: 100%;
-  position: fixed;
-  padding: 1rem 1rem;
-  background-color: #0000002d;
-  justify-content: space-between;
-}
-.head-content-content {
-  position: absolute;
-}
-.flex-col {
-  display: flex;
-  flex-direction: column;
-}
-.flex-row {
-  display: flex;
-  flex-direction: row;
-
-  /* justify-items: center; */
-}
-.header {
-  width: 100%;
-  background-repeat: no-repeat;
-}
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 238px;
-  margin-top: 10px;
-}
-.cell {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 25px;
-  height: 25px;
-  border: 1px solid #aaa;
-  margin-right: -1px;
-  margin-bottom: -1px;
-}
-.cell:nth-child(3n) {
-  margin-right: 0;
-}
-.cell:nth-child(27n) {
-  margin-bottom: 0;
-}
-.cell-move {
-  transition: transform 1s;
-}
-.demo {
-  display: flex;
-  flex-direction: column;
-  // justify-items: center;
-  align-items: center;
-  width: 100%;
-  padding: 2rem;
-}
+<style lang="scss" scoped>
+@import "./HelloWorld.scss";
+@import "./animation.scss";
 </style>

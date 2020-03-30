@@ -1,16 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import MyWorld from '@/components/items/MyWorld'
-import colorfulLife from '@/components/items/colorfulLife'
-import MyZoom from '@/components/items/MyZoom'
-import MyStory from '@/components/items/Story/readStory'
-import CardHover from '@/components/items/Shows/cardHover'
-import List from '@/components/items/Shows/list'
-import Loading from '@/components/items/Shows/Loading'
-import ColorBg from '@/components/items/Shows/colorBg'
-import CoolSearch from '@/components/items/Shows/coolSearch'
-import GetColor from '@/components/items/Shows/getColors/getColors'
+
+
 
 Vue.use(Router)
 
@@ -19,60 +10,91 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: ()=>import('@/components/HelloWorld')
     },
     {
       path: '/myworld',
       name: 'MyWorld',
-      component: MyWorld
+      component: ()=>import('@/components/items/MyWorld')
+    },
+    {
+      path: '/myDays',
+      name: 'myDays',
+      component:()=>import('@/components/items/Days/index'),
+      children:[
+        {
+          path:'/',
+          component:()=>import('@/components/items/Days/movie/index')
+        },
+        {
+          path: '/myDays/music',
+          name:'music',
+          component:()=>import('@/components/items/Days/music/index')
+        },
+        {
+          path: '/myDays/movie',
+          name:'movie',
+          component:()=>import('@/components/items/Days/movie/index')
+        },
+        {
+          path: '/myDays/book',
+          name:'book',
+          component:()=>import('@/components/items/Days/book/index')
+        }
+      ]
     },
     {
       path: '/colorfulLife',
       name: 'colorfulLife',
-      component: colorfulLife,
+      component: ()=>import('@/components/items/colorfulLife'),
       children:[
         {
           path: '/colorfulLife/list',
           name:'list',
-          component:List
+          component:()=>import('@/components/items/Shows/list')
         },
         {
           path: '/colorfulLife/cardHover',
           name:'cardHover',
-          component:CardHover
+          component:()=>import('@/components/items/Shows/cardHover')
         },
         {
           path: '/colorfulLife/loading',
           name:'loading',
-          component:Loading
+          component:()=>import('@/components/items/Shows/Loading')
         },
         {
           path: '/colorfulLife/colorBg',
           name:'colorBg',
-          component:ColorBg
+          component:()=>import('@/components/items/Shows/colorBg')
         },
         {
           path: '/colorfulLife/coolSearch',
           name:'CoolSearch',
-          component:CoolSearch
+          component:()=>import('@/components/items/Shows/coolSearch')
         },
         {
           path: '/colorfulLife/getColor',
           name:'GetColor',
-          component:GetColor
+          component:()=>import('@/components/items/Shows/getColors/getColors')
         }
       ]
     },
     {
       path: '/myzoom',
       name: 'MyZoom',
-      component: MyZoom
+      component: ()=>import('@/components/items/MyZoom')
     },
     {
       path: '/readStory',
       name: 'MyStory',
-      component: MyStory
+      component: ()=>import('@/components/items/Story/readStory')
     },
+    {
+      path: '/me',
+      name: 'me',
+      component: ()=>import('@/components/items/me')
+    }
    
   ]
 })

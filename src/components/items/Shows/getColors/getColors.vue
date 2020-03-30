@@ -40,7 +40,8 @@ export default {
   data() {
     return {
       colors: colors,
-      slogan: slogan
+      slogan: slogan,
+      curColor: '',
     };
   },
 
@@ -53,6 +54,7 @@ export default {
       this.$router.push("/colorfulLife/list");
     },
     getColor(code) {
+      this.curColor = code;
       var clipboard = new Clipboard(".color-card", {
         //复制剪贴板
         text: function() {
@@ -61,9 +63,11 @@ export default {
       });
 
       clipboard.on("success", function(e) {
-        console.log(e);
+        //console.log(e);
+        
         clipboard.destroy();
       });
+      this.openNotification();
     },
     setColor() {
       let cards = document.querySelectorAll(".color-card");
@@ -74,7 +78,16 @@ export default {
           parseInt(index % 5)
         ].code;
       });
-    }
+    },
+    openNotification () {
+        this.$notification.open({
+          message: `${this.curColor}!`,
+          duration: 2 ,
+          description: 'GOT IT !',
+          icon: <a-icon type="smile" style="color: rgb(17, 233, 53)" />,
+          
+        });
+      },
   }
 };
 </script>
