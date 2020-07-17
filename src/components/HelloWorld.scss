@@ -1,19 +1,20 @@
-
 // 菜单
 .menuL {
   border: 2px solid #000;
   border-radius: 1rem;
-  height: 80px;
-  width: 260px;
+  height: 6rem;
+  width: 16rem;
   font-size: 2rem;
   font-weight: 600;
   padding-top: 15px;
-  line-height: 30px;
+  line-height: 2.4rem;
   color: #000;
-  opacity: 0;
-  // background-color: #ffffffde;
+  box-shadow: 0 0.3px 0.6px rgba(0, 0, 0, 0.056),
+    0 0.7px 1.3px rgba(0, 0, 0, 0.081), 0 1.3px 2.5px rgba(0, 0, 0, 0.1),
+    0 2.2px 4.5px rgba(0, 0, 0, 0.119), 0 4.2px 8.4px rgba(0, 0, 0, 0.144),
+    0 10px 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  // transition: all 0.4s ease-out;
+  box-sizing: border-box;
   p {
     font-size: 1rem;
     font-weight: 200;
@@ -21,11 +22,18 @@
 }
 
 .menuL:hover {
-  margin: -2px 0 0 -2px;
-  height: 84px;
-  width: 264px;
-  font-weight: 600;
-  border: 3px solid;
+  //   margin: -2px 0 0 -2px;
+  //   height: 84px;
+  //   width: 264px;
+  //   border: 3px solid;
+  //   box-shadow: 0 0 15px #7f8c8d;
+  //   color: #fff;
+  font-size: 2.4rem;
+  p {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  //   background-color: #000;
 }
 
 .menuR {
@@ -51,8 +59,8 @@
       display: flex;
     }
     img {
-        // width: 100%;
-        opacity: 0;
+      // width: 100%;
+      opacity: 0;
     }
     .aboutMe {
       width: 120%;
@@ -84,16 +92,15 @@
     .col3 {
       width: 100%;
       height: 200px;
-      transform:scale(0);
-      -webkit-transform: scale(0); 
+      transform: scale(0);
+      -webkit-transform: scale(0);
       transition: all 0.8s ease-out;
-
     }
     .col2 {
       width: 100%;
       height: 340px;
-      transform:scale(0);
-      -webkit-transform: scale(0); 
+      transform: scale(0);
+      -webkit-transform: scale(0);
       transition: all 0.8s ease-out;
     }
   }
@@ -124,7 +131,7 @@
   background-color: black;
   color: #ffffff;
   padding: 1rem 2rem;
-  
+
   justify-items: center;
   display: flex;
 
@@ -139,8 +146,8 @@
 .last-div {
   background: black;
   .textdiv {
-    width:60%;
-    margin:2rem auto;
+    width: 60%;
+    margin: 2rem auto;
   }
 }
 
@@ -171,7 +178,6 @@ h3 {
   color: rgb(255, 255, 255);
 }
 .text-foot {
-
   width: 50%;
   margin: 0 auto;
   margin-top: 3rem;
@@ -231,8 +237,8 @@ h1 {
   position: fixed;
   top: -100%;
   padding: 1rem 1rem;
-//   background-color: #0000002d;
-    transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+  //   background-color: #0000002d;
+  transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
   justify-content: space-between;
 }
 .head-content-content {
@@ -286,95 +292,95 @@ h1 {
   padding: 2rem;
 }
 .slideBg {
-    width: 100%;
-    height: 100vh;
-    background-attachment: fixed;
-    // background-image: url('/static/imgs/sea.jpg');
-    background-size: cover;
-    background-position: center center;
-    .content {
-        text-align: center;
-        line-height: 100vh;
-        color: #ffffff;
-        font-size: 8rem;
-        font-weight: 600
-    }
+  width: 100%;
+  height: 100vh;
+  background-attachment: fixed;
+  // background-image: url('/static/imgs/sea.jpg');
+  background-size: cover;
+  background-position: center center;
+  .content {
+    text-align: center;
+    line-height: 100vh;
+    color: #ffffff;
+    font-size: 8rem;
+    font-weight: 600;
+  }
 }
 
-@media screen and (max-width:600px) {
-
-
- .body {
-  .body-one {
-    width: 100%;
-    padding-top: 3rem;
-    margin-bottom: 8rem;
-    .myPart {
-      display: flex;
-    }
-    img {
-        opacity: 0;
-    }
-    .aboutMe {
-      width: 100%;
-      height: 370px;
-      margin-top: 40px;
-      padding: 2rem;
-      border: 3px solid #000000;
-      opacity: 0;
-    }
+@media screen and (max-width: 600px) {
+  .loginBar {
+    display: none;
   }
-
-  .body-two {
-    height: 350px;
-    margin: 5rem 0;
-    padding-top: 5rem;
-    padding: 0 ;
-    text-align: center;
-    .menu-line {
-      width:100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      .menuL {
-        border: 2px solid #000;
-        border-radius: 1rem;
-        height: 80px;
-        width: 240px;
-        margin-bottom: 1em;
-        font-size: 2rem;
-        font-weight: 600;
-        padding-top: 15px;
-        line-height: 30px;
-        color: #000;
+  .body {
+    .body-one {
+      width: 100%;
+      padding-top: 3rem;
+      margin-bottom: 8rem;
+      .myPart {
+        display: flex;
+      }
+      img {
         opacity: 0;
-        p {
-          font-size: 1rem;
-          font-weight: 200;
+      }
+      .aboutMe {
+        width: 100%;
+        height: 370px;
+        margin-top: 40px;
+        padding: 2rem;
+        border: 3px solid #000000;
+        opacity: 0;
+      }
+    }
+
+    .body-two {
+      height: 350px;
+      margin: 5rem 0;
+      padding-top: 5rem;
+      padding: 0;
+      text-align: center;
+      .menu-line {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .menuL {
+          border: 2px solid #000;
+          border-radius: 1rem;
+          height: 80px;
+          width: 240px;
+          margin-bottom: 1em;
+          font-size: 2rem;
+          font-weight: 600;
+          padding-top: 15px;
+          line-height: 30px;
+          color: #000;
+          opacity: 0;
+          p {
+            font-size: 1rem;
+            font-weight: 200;
+          }
         }
       }
     }
-  }
 
-  .last-div {
-    background: black;
-    .textdiv {
-      width:90%;
-      margin:2rem auto;
+    .last-div {
+      background: black;
+      .textdiv {
+        width: 90%;
+        margin: 2rem auto;
+      }
+    }
+
+    .slideBg {
+      .content {
+        font-size: 2.5rem;
+      }
+    }
+
+    .body-three {
+      display: none;
     }
   }
-
-  .slideBg {
-    .content {
-      font-size: 2.5rem;
-    }
-  }
-
-  .body-three {
-    display: none;
-  }
-
- }
 
   .myPart {
     display: flex;
@@ -383,7 +389,7 @@ h1 {
 
   .foot {
     height: 8rem;
-    padding:0;
+    padding: 0;
     padding-top: 2rem;
     flex-direction: column;
     align-items: center;
@@ -394,8 +400,5 @@ h1 {
         margin-top: 2rem;
       }
     }
-    
   }
-
 }
-
