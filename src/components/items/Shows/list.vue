@@ -1,9 +1,9 @@
 <template>
     <section>
         <a-back-top />
-        <div :class="[{'preloader':true,'active':active}]">
+        <!-- <div :class="[{'preloader':true,'active':active}]">
             <div ref="num" :class="[{'count':true,'hide':hide}]">0</div>
-        </div>
+        </div>-->
         <div>
             <colorful>
                 <div>
@@ -85,7 +85,7 @@ export default {
     mounted () {
 
         this.active = this.$route.params.active != undefined ? this.$route.params.active : true;
-        this.load();
+        // this.load();
     },
     methods: {
         addOne () {
@@ -99,16 +99,16 @@ export default {
         },
         load () {
             //预加载界面
-            let numDiv = this.$refs.num;
-            let counter = setInterval(() => {
-                let num = parseInt(numDiv.textContent);
-                numDiv.textContent = (++num).toString();
-                if (num == 100) {
-                    clearInterval(counter);
-                    this.hide = true;
-                    this.active = true;
-                }
-            }, 30);
+            // let numDiv = this.$refs.num;
+            // let counter = setInterval(() => {
+            //     let num = parseInt(numDiv.textContent);
+            //     numDiv.textContent = (++num).toString();
+            //     if (num == 100) {
+            //         clearInterval(counter);
+            //         this.hide = true;
+            //         this.active = true;
+            //     }
+            // }, 30);
         },
         checkItem (item) {
             if (item.url) {
@@ -169,7 +169,11 @@ export default {
 }
 
 .active {
-    transform: translateY(-100vh);
+    /* transform: translateY(-100vh);
+    transition: ease-in-out 1s;
+    transition-delay: 1s; */
+    opacity: 0;
+    pointer-events: none;
     transition: ease-in-out 1s;
     transition-delay: 1s;
 }
@@ -190,7 +194,7 @@ export default {
 .hide {
     opacity: 0;
     pointer-events: none;
-    transition: 1s;
+    transition: ease-in-out 1s;
 }
 
 .content {

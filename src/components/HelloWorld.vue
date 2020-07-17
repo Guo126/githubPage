@@ -396,6 +396,9 @@ export default {
 
         //console.log(this.$store.state.text)
     },
+    beforeDestroy () {
+        window.removeEventListener("scroll", this.anim())
+    },
     methods: {
         shuffle: function () {
             setTimeout(() => {
@@ -546,22 +549,29 @@ export default {
             return document.getElementById(name).getBoundingClientRect().top;
         },
 
-        //响应式布局
+        //动画监听
         scrollAnim () {
-            window.addEventListener("scroll", () => {
-                let scrollTop =
-                    document.documentElement.scrollTop || document.body.scrollTop;
+            window.addEventListener("scroll", this.anim())
 
-                //标题栏出现
-                if (scrollTop < 200) {
-                    this.getEle("title").style.top = 0;
-                    this.getEle("title").style.backgroundColor = "#0000002d";
-                }
-                //三个小菜单依次上升
-                if (scrollTop > 300) {
-                    this.showMenuA = true;
-                    let menus = Array.from(document.getElementsByClassName("menuL"));
+            // this.$on('hook:beforeDestroy', () => {
+            //     window.removeEventListener("scroll", this.anim())
+            // })
+        },
+        //页面动画
+        anim () {
+            let scrollTop =
+                document.documentElement.scrollTop || document.body.scrollTop;
 
+            //标题栏出现
+            if (scrollTop < 200) {
+                this.getEle("title").style.top = 0;
+                this.getEle("title").style.backgroundColor = "#0000002d";
+            }
+            //三个小菜单依次上升
+            if (scrollTop > 300) {
+                this.showMenuA = true;
+                let menus = Array.from(document.getElementsByClassName("menuL"));
+                if (menus.length > 0) {
                     menus[0].classList.add("animated", "rize");
 
                     setTimeout(() => {
@@ -574,26 +584,27 @@ export default {
                     }, 500);
                 }
 
-                //个人信息
-                if (scrollTop > 1000) {
-                    this.getEle("myP").classList.add("animated", "slideR");
-                    this.getEle("myM").classList.add("animated", "slideL");
-                }
+            }
 
-                //days部分的图片
-                if (scrollTop > 4200) {
-                    let domsa = Array.from(document.getElementsByClassName("col2"));
-                    let domsb = Array.from(document.getElementsByClassName("col3"));
+            //个人信息
+            if (scrollTop > 1000) {
+                this.getEle("myP").classList.add("animated", "slideR");
+                this.getEle("myM").classList.add("animated", "slideL");
+            }
 
-                    domsa.forEach(item => {
-                        item.style.transform = "scale(1)";
-                    });
+            //days部分的图片
+            if (scrollTop > 4200) {
+                let domsa = Array.from(document.getElementsByClassName("col2"));
+                let domsb = Array.from(document.getElementsByClassName("col3"));
 
-                    domsb.forEach(item => {
-                        item.style.transform = "scale(1)";
-                    });
-                }
-            });
+                domsa.forEach(item => {
+                    item.style.transform = "scale(1)";
+                });
+
+                domsb.forEach(item => {
+                    item.style.transform = "scale(1)";
+                });
+            }
         }
     }
 };
